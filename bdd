@@ -1,0 +1,48 @@
+create TABLE SESSION
+(
+    id INT NOT NULL AUTO_INCREMENT,
+    user_id INT,
+    distance FLOAT,
+    heuredeb DATETIME,
+    heurefin DATETIME,
+    vitessemax FLOAT,
+    PRIMARY KEY (id),
+    FOREIGN KEY (user_id) REFERENCES UTILISATEUR(id)
+)
+
+CREATE TABLE UTILISATEUR
+(
+    id INT NOT NULL AUTO_INCREMENT,
+    nom VARCHAR(100),
+    prenom VARCHAR(100),
+    email VARCHAR(255),
+    badge INT,
+    langue_id INT,
+    PRIMARY KEY (id),
+    FOREIGN KEY (langue_id) REFERENCES LANGUE(id)
+)
+
+CREATE TABLE LANGUE
+(
+    id INT,
+    libellé VARCHAR(255),
+    icone VARCHAR(255)
+)
+
+CREATE TABLE TRADUCTION
+(
+    id INT NOT NULL AUTO_INCREMENT,
+    etiquette_id INT,
+    langue_id int,
+    libelle VARCHAR(255),
+    PRIMARY KEY (id),
+    FOREIGN KEY (etiquette_id) REFERENCES ETIQUETTE(id),
+    FOREIGN KEY (langue_id) REFERENCES LANGUE(id)
+)
+
+CREATE TABLE ETIQUETTE
+(
+    id INT NOT NULL AUTO_INCREMENT,
+    libelle VARCHAR(255),
+    PRIMARY KEY (id)
+)
