@@ -6,6 +6,7 @@ create TABLE SESSION
     heuredeb DATETIME,
     heurefin DATETIME,
     vitessemax FLOAT,
+    idexterne INT,
     PRIMARY KEY (id),
     FOREIGN KEY (user_id) REFERENCES UTILISATEUR(id)
 )
@@ -16,6 +17,7 @@ CREATE TABLE UTILISATEUR
     nom VARCHAR(100),
     prenom VARCHAR(100),
     email VARCHAR(255),
+    password VARCHAR(255),
     badge INT,
     langue_id INT,
     PRIMARY KEY (id),
